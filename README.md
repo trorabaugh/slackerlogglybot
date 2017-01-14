@@ -34,7 +34,40 @@ This bot demonstrates many of the core features of Botkit:
     
 ## Modify the /lib/botconfig.js and add your slack and loggly tokens
   
-## Modify the bot config options accordingly
+  ```
+  BotConfigOptions.SlackOptions = {
+    token: "<Enter_Your_Slack_Token>"
+}
+
+BotConfigOptions.WinstonLogglyOptions = {
+        "subdomain": "<loggly_customer_domain>",
+        "inputToken": "<loggly_customer_token>",
+        "auth": {
+          "username": "<loggly_user_name>",
+          "password": "<loggly_password>"
+        },
+        "tags": ["slackloggly"]
+};
+
+
+BotConfigOptions.LogglySearchOptions = {
+    hostname: '<subdomain>.loggly.com',
+    port: 443,
+    method: 'GET',
+    auth: "<loggly_user_name>:<loggly_password>"
+
+};
+
+BotConfigOptions.LogglyEventOptions = {
+    hostname: '<subdomain>.loggly.com',
+    port: 443,
+    method: 'GET',
+    auth: "<loggly_user_name>:<loggly_password>"
+};
+
+```
+
+## Modify the bot config options above accordingly
     
 ## Run the bot from the command line:
 
