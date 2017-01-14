@@ -13,7 +13,7 @@
            \ \_____\  \ \_____\    \ \_\  \ \_\ \_\  \ \_\    \ \_\
             \/_____/   \/_____/     \/_/   \/_/\/_/   \/_/     \/_/
             
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  
 This is a sample Slack Loggly bot built with Botkit.
 
@@ -35,6 +35,10 @@ This bot demonstrates many of the core features of Botkit:
   Get a Token from Loggly:
    
     -> https://<your_company>.loggly.com/tokens
+    
+  Modify the /lib/botconfig.js and add your slack and loggly tokens
+  
+  Modify the options accordingly
     
   Run the bot from the command line:
 
@@ -75,46 +79,26 @@ This bot demonstrates many of the core features of Botkit:
 
 const https = require('https');
 const querystring = require('querystring');
+const botconfig = require('./lib/botconfig.js');
 
-
+var winstonLogglyOptions = botconfig.options.WinstonLogglyOptions;
+var searchOptions = botconfig.options.LogglySearchOptions;
+var eventOptions = botconfig.options.LogglyEventOptions;
+var slackOptions = botconfig.options.SlackOptions;
+var slackToken = slackOptions.token;
+if(process.env.token) {
+   slackToken = process.env.token; 
+}
 var winston = require('winston');
 require('winston-loggly');
-var options = {
-        "subdomain": "slackloggly",
-        "inputToken": "3a5b3715-f466-488b-b805-b6aa14f66ee2",
-        "auth": {
-          "username": "trorabaugh",
-          "password": "N&!S6GV5ChQy2*nvsyis6iupqp$MtRVZ&ttO"
-        },
-        "tags": ["slackloggly"]
-};
 
-winston.add(winston.transports.Loggly, options);
-
-
-var searchOptions = {
-    hostname: 'slackloggly.loggly.com',
-    port: 443,
-    method: 'GET',
-    "auth": "trorabaugh:N&!S6GV5ChQy2*nvsyis6iupqp$MtRVZ&ttO"
-
-};
-
-var eventOptions = {
-    hostname: 'slackloggly.loggly.com',
-    port: 443,
-    method: 'GET',
-    "auth": "trorabaugh:N&!S6GV5ChQy2*nvsyis6iupqp$MtRVZ&ttO"
-};
+winston.add(winston.transports.Loggly, winstonLogglyOptions);
 
 
 
 
-
-
-
-if (!process.env.token) {
-    console.log('Error: Specify token in environment');
+if (!slackToken || slackToken == "<Enter_Your_Slack_Token>" || !winstonLogglyOptions.inputToken || winstonLogglyOptions.inputToken == "<loggly_customer_token>") {
+    console.log('Error: Specify tokens in environment or fix your /lib/botconfig.js file');
     process.exit(1);
 }
 
@@ -126,7 +110,7 @@ var controller = Botkit.slackbot({
 });
 
 var bot = controller.spawn({
-    token: process.env.token
+    token: slackToken
 }).startRTM();
 
 
