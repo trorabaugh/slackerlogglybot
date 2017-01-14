@@ -34,8 +34,8 @@ This bot demonstrates many of the core features of Botkit:
     
 ## Modify the /lib/botconfig.js and add your slack and loggly tokens
   
-  ```
-  BotConfigOptions.SlackOptions = {
+```
+BotConfigOptions.SlackOptions = {
     token: "<Enter_Your_Slack_Token>"
 }
 
