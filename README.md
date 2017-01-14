@@ -77,23 +77,23 @@ BotConfigOptions.LogglyEventOptions = {
 
   * Find your bot inside Slack to send it a direct message.
   
-  * * Say: "Hello"
+  ** Say: "Hello"
 
-  * * The bot will reply "Hello!"
+  ** The bot will reply "Hello!"
 
   * Say: "who are you?"
 
-  * * The bot will tell you its name, where it is running, and for how long.
+  ** The bot will tell you its name, where it is running, and for how long.
 
   * Make sure to invite your bot into other channels using /invite @<my bot>!
 
   * Next try to log something
   
-  * * Say: "@<your_botname> log <message you want to log>"
+  ** Say: "@<your_botname> log <message you want to log>"
   
-  * * The bot will say the message is logged. 
+  ** The bot will say the message is logged. 
   
-  * * Say: "@<your_botname> search <message to search for>"
+  ** Say: "@<your_botname> search <message to search for>"
 
 # EXTEND THE BOT:
 
@@ -102,4 +102,5 @@ BotConfigOptions.LogglyEventOptions = {
   * Read all about it here:
 
     ** [Howdy.ai](http://howdy.ai/botkit)
+    
     ** [SlackerLoggly](http://slackerloggly.github.com)
