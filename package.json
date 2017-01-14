@@ -1,0 +1,39 @@
+{
+  "name": "slackerlogglybot",
+  "version": "0.0.1",
+  "description": "Simple Demo using Botkit for Slacker and Loggly",
+  "main": "lib/slackerlogglylib.js",
+  "dependencies": {
+    "botkit": "^0.4.7"
+  },
+  "devDependencies": {
+    "jscs": "^2.7.0",
+    "mocha": "^2.4.5",
+    "should": "^8.0.2",
+    "winston": "^2.1.1"
+  },
+  "scripts": {
+    "pretest": "jscs ./lib/",
+    "test": "mocha tests/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trorabaugh/slackerloggly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trorabaugh/slackerloggly/issues"
+  },
+  "homepage": "http://slackerloggly.github.com",
+  "keywords": [
+    "slackbot",
+    "loggly",
+    "bots",
+    "chatbots",
+    "slack",
+    "facebook messenger",
+    "twilio ipm",
+    "microsoft bot framework"
+  ],
+  "author": "somewhere@outthere.com",
+  "license": "MIT"
+}
