@@ -1,2 +1,3 @@
-# slackerlogglybot
-Simple slacker loggly bot using Botkit
+# Welcome to Slacker Loggly Bot
+This is just a simple example of a Slacker Loggly Bot
+
