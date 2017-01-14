@@ -14,10 +14,14 @@ This bot demonstrates many of the core features of Botkit:
 - Use Loggly to search for messages
 
 # Depends on:
+
 ```
-  -> "botkit": ^0.4.7,
-  -> "winston-loggly": "^1.3.1"
+  -> NodeJS
+  -> botkit: ^0.4.7,
+  -> winston-loggly: "^1.3.1"
+
 ```
+
 # RUN THE BOT:
 
 ## Get a Bot token from Slack:
