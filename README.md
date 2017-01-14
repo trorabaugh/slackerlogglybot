@@ -13,6 +13,11 @@ This bot demonstrates many of the core features of Botkit:
 - Use Loggly to log messages.
 - Use Loggly to search for messages
 
+# Depends on:
+ 
+  -> "botkit": ^0.4.7,
+  -> "winston-loggly": "^1.3.1"
+
 # RUN THE BOT:
 
 ## Get a Bot token from Slack:
@@ -22,6 +27,10 @@ This bot demonstrates many of the core features of Botkit:
 ## Get a Token from Loggly:
    
     -> https://<your_company>.loggly.com/tokens
+
+## INSTALL DEPENDENCIES
+    
+    -> npm install 
     
 ## Modify the /lib/botconfig.js and add your slack and loggly tokens
   
