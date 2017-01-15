@@ -321,19 +321,6 @@ controller.hears('sysrel',['direct_message,direct_mention,mention','message_rece
   return bot.reply(message, 'My os release is ' + os.release());
 });
 
-controller.hears('open the (.*) door',['direct_message,direct_mention,mention','message_received'],function(bot,message) {
-  var doorType = message.match[1]; //match[1] is the (.*) group. match[0] is the entire group (open the (.*) doors).
-  console.log('DOOR TYPE'+doorType);
-  if (doorType === 'fucking') {
-    return bot.reply(message, 'Im a bot I can open stuff but I can\'t fuck stuff.');
-  } else if(doorType === 'sliding') {
-      return bot.reply(message, 'Okay I will open the sliding doors');
-  } else if(doorType === 'backdoor') {
-    return bot.reply(message, 'Okay I will open the sliding doors');
-    
-  }
-  return bot.reply(message, 'Okay I will open the ' + doorType);
-});
 
 
 //////// LOGGLY STUFF
