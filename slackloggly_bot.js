@@ -96,7 +96,7 @@ winston.add(winston.transports.Loggly, winstonLogglyOptions);
 
 
 
-
+// Clean this up appropriately
 if (!slackToken || slackToken == "<Enter_Your_Slack_Token>" || !winstonLogglyOptions.inputToken || winstonLogglyOptions.inputToken == "<loggly_customer_token>") {
     console.log('Error: Specify tokens in environment or fix your /lib/botconfig.js file');
     process.exit(1);
