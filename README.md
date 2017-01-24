@@ -1,6 +1,6 @@
 # Welcome to Slacker Loggly Bot
 
-This is just a simple example of a Slacker Loggly Bot and is a deomonstration 
+This is just a simple example of a Slacker Loggly Bot and is a demonstration 
 of the integration of Loggly and Slack using Botkit.
 
 This bot demonstrates many of the core features of Botkit:
