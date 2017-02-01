@@ -325,6 +325,8 @@ controller.hears('sysrel',['direct_message,direct_mention,mention','message_rece
 
 //////// LOGGLY STUFF
 
+
+// Search Loggly 
 controller.hears(['search'], 'direct_message,direct_mention,mention', function(bot, message) {
     var searchString = message.text.replace(/^search /,'');
     var origSearchMessage = message.text.replace(/^search /,'');
@@ -376,5 +378,40 @@ controller.hears(['search'], 'direct_message,direct_mention,mention', function(b
     });
     
     
+});
+
+
+// Stream Logs to Channel Of Choice
+// Using LiveTail Loggly Feature
+// See the ./lib/botconfig.js liveTail
+var sys = require('util');
+var exec = require('child_process').exec;
+
+function exputs(error, stdout, stderr) { console.log(error, stdout, stderr) }
+
+controller.hears('streamlogs',['direct_message,direct_mention,mention','message_received'],function(bot,message) {
+    message.text = message.text.replace(/^streamlogs/,'');
+    var matchString = "";
+    var matched = message.text.match(/\s-match=.*/g);
+    console.log('######################\n Matched String', matched);
+    var matchedString = (matched && matched[0])? matched[0] : " -match=.*";
+    matchedString = matchedString.replace(/\s-ignore=.*/g,'');
+    matchString = matchedString.replace(/\s-match=/,'');
+    console.log('###############################\n', matchString);
+    var ignored = message.text.match(/\s-ignore=.*/g);
+    var ignoredString = (ignored && ignored[0])? ignored[0] : "";
+    ignoredString = ignoredString.replace(/\s-match=(.*)/g,'');
+    var ignorString = ignoredString.replace(/\s-ignore=/,'');
+    
+    var exMatchString = "";
+    exMatchString = "-m '" + matchString + "'";
+    var exIgnoreString = "";
+    if(ignorString != '') {
+        exIgnoreString = " -i '" + ignorString + "'";
+    }
+    var fullExeCmd = './tailclient-' + botconfig.options.LiveTailOptions.version + '/bin/livetail ' + exMatchString + exIgnoreString;
+    console.log('#######################################\n'+fullExeCmd);
+    exec(fullExeCmd, exputs);
+  return bot.reply(message, 'Starting a stream on ' + message.text + fullExeCmd);
 });
 
