@@ -11,6 +11,7 @@ This bot demonstrates many of the core features of Botkit:
 - Use the conversation system to ask questions
 - Use Loggly to log messages.
 - Use Loggly to search for messages
+- Use Loggly LiveTail in order to stream messages to Slack
 
 # Depends on:
 
@@ -18,7 +19,9 @@ This bot demonstrates many of the core features of Botkit:
   -> NodeJS
   -> botkit: ^0.4.7,
   -> winston-loggly: "^1.3.1"
-
+  -> Loggly LiveTail (Token) CMD 
+  -> Java If using LiveTail 
+  
 ```
 
 # RUN THE BOT:
@@ -34,6 +37,7 @@ This bot demonstrates many of the core features of Botkit:
 ## INSTALL DEPENDENCIES
     
     -> npm install 
+    -> npm run installlogglycli - This will install the loggly CLI LiveTail CMD utility. 
     
 ## Modify the /lib/botconfig.js and add your slack and loggly tokens
   
@@ -68,6 +72,12 @@ BotConfigOptions.LogglyEventOptions = {
     auth: "<loggly_user_name>:<loggly_password>"
 };
 
+BotConfigOptions.LiveTailOptions = {
+    "version":"1.0.3",
+    "liveTailToken":"<loggly_livetail_token>"
+};
+
+
 ```
 
 ## Modify the bot config options above accordingly
@@ -97,6 +107,10 @@ BotConfigOptions.LogglyEventOptions = {
   ** The bot will say the message is logged. 
   
   ** Say: "@<your_botname> search <message to search for>"
+  
+  ** Say: "@<your_botname> streamlogs -match=<match_string> -ignore=<ignore_string>
+  
+  ** Repeat above to see new message streams that match
 
 # EXTEND THE BOT:
 
